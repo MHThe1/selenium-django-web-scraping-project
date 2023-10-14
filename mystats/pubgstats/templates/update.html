@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block title %} Create new Leaderboard | {% endblock title %}
+{% block body %}
+
+<div class="container">
+    <h1>Create a new Leaderboard</h1>
+    <form action="{% url 'update' %}" method="POST" class="row g-3 needs-validation" novalidate>
+        {% csrf_token %}
+        <div class="input-group mb-3">
+            <div class="has-validation form-floating">
+                <input type="text" class="form-control" id="parent_id" name="parent_id" aria-describedby="inputGroupPrepend"
+                    placeholder="Leader Board Id" required>
+                <label for="parent_id">Leader Board Id</label>
+                <div class="invalid-feedback">
+                    Please provide a ID!
+                </div>
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroupPrepend">#</span>
+            <div class="has-validation form-floating">
+                <input type="text" class="form-control" id="last_link" name="last_link"
+                    aria-describedby="inputGroupPrepend" placeholder="PubgRank link" required>
+                <label for="last_link">PubgRank link</label>
+                <div class="invalid-feedback">
+                    <p style="margin-left:1em">Please input a link!</p>
+                </div>
+            </div>
+        </div>
+            <div class="input-group mb-3">
+                <div class="has-validation form-floating">
+                    <input type="passw" class="form-control" id="passw" name="passw"
+                        aria-describedby="inputGroupPrepend" placeholder="Password" required>
+                    <label for="passw">Password</label>
+                    <div class="invalid-feedback">
+                        Please provide a password!
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <button class="btn btn-primary" type="submit">Update</button>
+            </div>
+    </form>
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (() => {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+    </script>
+    <br>
+    <h2><a href="/">Get back to Home</a> </h2>
+</div>
+
+{% endblock body %}
